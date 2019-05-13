@@ -22,8 +22,8 @@ date
 date
 
 # Install editors
-  apt install -y vim
   apt install -y nano
+  apt install -y vim
 
 # lpr might be needed enscript
   apt install -y lpr
