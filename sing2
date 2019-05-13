@@ -1,19 +1,6 @@
 Bootstrap: docker 
 From: ubuntu:16.04
 
-%post
-    apt-get -y update
-    apt-get -y install wget
-    apt-get -y install apt-transport-https
-# Next lines require to download Intel Python
-    wget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS-2019.PUB
-    apt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS-2019.PUB
-[osboxes@osboxes singularity]$ mv dofort dofort.def
-[osboxes@osboxes singularity]$ vi dofort.def
-[osboxes@osboxes singularity]$ cat dofort.def 
-Bootstrap: docker
-From: ubuntu:18.04
-
 %setup
     touch /file1
     touch ${SINGULARITY_ROOTFS}/file2
