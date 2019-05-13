@@ -15,6 +15,7 @@ From: ubuntu:18.04
 
 %post
     apt-get update && apt-get install -y netcat
+    apt install -y gfortran
     NOW=`date`
     echo "export NOW=\"${NOW}\"" >> $SINGULARITY_ENVIRONMENT
 
