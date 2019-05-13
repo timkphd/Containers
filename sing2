@@ -18,7 +18,7 @@ From: ubuntu:18.04
     apt install -y gcc
     apt install -y gfortran
     apt install -y g++
-    apt install -y make
+#    apt install -y make
     NOW=`date`
     echo "export NOW=\"${NOW}\"" >> $SINGULARITY_ENVIRONMENT
 
