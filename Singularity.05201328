@@ -83,7 +83,7 @@ Rmpi_0.6-9.tar.gz
 
 
 date
-    apt-get -y install intelpython3
+#    apt-get -y install intelpython3
 date
     #apt-get -y install intelpython2
 date
