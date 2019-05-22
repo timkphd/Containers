@@ -30,8 +30,8 @@ date
 
 # The next two lines install a perl module needed 
 # by the backup app installed below.
-    apt install -y cpanminus
-    cpan install Term::ANSIColor
+   apt install -y cpanminus
+   cpan install Term::ANSIColor
 
 # Install Rrrrrrrr
 #apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
@@ -41,7 +41,7 @@ apt update
 apt install -y r-base
 
 
-######  Skp Intel MPI  ######
+#3#####  Skp Intel MPI  ######
 # Intel MPI is huge
 # apt-get -y install intel-mpi-2019.3-062 2019.3-062
 
@@ -99,9 +99,10 @@ cd /opt/intel/intelpython3/lib/python3.6/site-packages
 rm -rf mpi4py*
 cd /opt/install
 export PATH=/opt/intel/intelpython3/bin:$PATH
-# this flag should prevent a compile error, hello
-export CFLAGS='-std=c99'
+export CFLAGS="-std=c99"
+
 pip install mpi4py
+unset CFLAGS
 
 #
 #
