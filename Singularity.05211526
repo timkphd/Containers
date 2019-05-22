@@ -99,6 +99,7 @@ cd /opt/intel/intelpython3/lib/python3.6/site-packages
 rm -rf mpi4py*
 cd /opt/install
 export PATH=/opt/intel/intelpython3/bin:$PATH
+# this flag should prevent a compile error
 export CFLAGS='-std=c99'
 pip install mpi4py
 
