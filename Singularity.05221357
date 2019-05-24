@@ -14,7 +14,7 @@ From: ubuntu:16.04
     export DEBIAN_FRONTEND=noninteractive
     apt-get install dialog
 date
-# Intalling Fortran also give us C.    
+# Intalling Fortran also gives us C.    
     apt install -y gfortran
 # Installing g++ make installing openmpi easier
     apt install -y g++
@@ -25,7 +25,7 @@ date
   apt install -y nano
   apt install -y vim
 
-# lpr might be needed enscript
+# lpr might be needed by enscript
   apt install -y lpr
 
 # The next two lines install a perl module needed 
@@ -41,7 +41,7 @@ apt update
 apt install -y r-base
 
 
-#3#####  Skp Intel MPI  ######
+######  Skip Intel MPI  ######
 # Intel MPI is huge
 # apt-get -y install intel-mpi-2019.3-062 2019.3-062
 
@@ -81,7 +81,7 @@ Rmpi_0.6-9.tar.gz
 
 
 
-
+# Install Intel Python
 date
 apt-get -y install intelpython3
 date
@@ -89,7 +89,7 @@ date
 date
 
 # uninstall and reinstall mpi4py
-# so it used openmpi
+# so it uses openmpi
 cd /opt/intel/intelpython3/bin
 rm -rf mpi*
 cd /opt/intel/intelpython3/lib
@@ -98,9 +98,10 @@ rm -rf libmpi*
 cd /opt/intel/intelpython3/lib/python3.6/site-packages
 rm -rf mpi4py*
 cd /opt/install
-export PATH=/opt/intel/intelpython3/bin:$PATH
-export CFLAGS="-std=c99"
 
+export PATH=/opt/intel/intelpython3/bin:$PATH
+
+export CFLAGS="-std=c99"
 pip install mpi4py
 unset CFLAGS
 
@@ -148,6 +149,8 @@ unset CFLAGS
 # Get a few other tools
     wget https://petra.acns.colostate.edu/docs/examples/tims_tools/backup
     chmod 755 backup
+    wget https://petra.acns.colostate.edu/docs/examples/tims_tools/stamp
+    chmod 755 stamp
     for t in tymer confidence.py plplot greenbar jlines ; do 
       wget https://petra.acns.colostate.edu/docs/examples/tims_tools/$t
       # fix the python version to point to the default installed version
@@ -180,8 +183,10 @@ date
     export PATH=/usr/local/bin:$PATH
     export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
     export export R_LIBS=/opt/install/rlibs/
-    export DO_IMPI=/opt/intel/impi/2019.3.199/intel64/bin/mpivars.sh
+    #export DO_IMPI=/opt/intel/impi/2019.3.199/intel64/bin/mpivars.sh
+    export DO_IMPI=/opt/examples/stamp
 
 %labels
     Author thkphd
+
 
