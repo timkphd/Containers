@@ -1,5 +1,5 @@
 Bootstrap: docker
-From: ubuntu:trusty-20190515
+From: ubuntu:trusty-20190515:i386
 
 %post
     apt-get -y update
