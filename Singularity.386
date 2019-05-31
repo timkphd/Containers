@@ -1,0 +1,26 @@
+Bootstrap: docker
+From: ubuntu:trusty-20190515
+
+%post
+    apt-get -y update
+    apt-get -y install wget
+    apt-get -y install gawk
+    apt-get -y install apt-transport-https
+
+# Intalling Fortran also gives us C.    
+    apt install -y gfortran
+# Installing g++ make installing openmpi easier
+    apt install -y g++
+    apt install -y make
+date
+
+# Install editors
+  apt install -y nano
+  apt install -y vim
+
+
+%environment
+    export LC_ALL=C
+
+%labels
+    Author thkphd
