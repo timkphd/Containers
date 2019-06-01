@@ -1,5 +1,5 @@
-Bootstrap: docker
-From: ubuntu-trusty-core-cloudimg-i386-root
+Bootstrap: docker pull i386/ubuntu
+From: ubuntu-trusty
 
 %post
     apt-get -y update
