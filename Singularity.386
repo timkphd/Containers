@@ -1,5 +1,5 @@
-Bootstrap: docker pull i386/ubuntu
-From: ubuntu-trusty
+Bootstrap: docker
+From: i366/ubuntu-trusty
 
 %post
     apt-get -y update
