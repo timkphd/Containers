@@ -1,5 +1,5 @@
-Bootstrap: docker
-From: i366/ubuntu-trusty
+Bootstrap: docker i686/ubuntu
+From: ubuntu
 
 %post
     apt-get -y update
