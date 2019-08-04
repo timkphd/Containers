@@ -80,6 +80,7 @@ R CMD INSTALL -l /opt/install/rlibs --configure-args=" \
 --with-Rmpi-type='OPENMPI' " \
 Rmpi_0.6-9.tar.gz 
 
+# Install rest of tutorial stuff
 cd /opt/install
 cat > bonk.R << EOF
 install.packages("ggplot2", lib=/opt/install/rlibs, repos="http://cran.r-project.org")
