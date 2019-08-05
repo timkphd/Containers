@@ -94,6 +94,7 @@ install.packages("foreach", lib=/opt/install/rlibs, repos="http://cran.r-project
 install.packages("tictoc", lib=/opt/install/rlibs, repos="http://cran.r-project.org")
 install.packages("stringr", lib=/opt/install/rlibs, repos="http://cran.r-project.org")
 EOF
+Rscript bonk.R
 
 
 # Install Intel Python
