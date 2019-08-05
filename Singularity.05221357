@@ -15,7 +15,7 @@ From: ubuntu:16.04
     export DEBIAN_FRONTEND=noninteractive
     apt-get install dialog
 date
-# Intalling Fortran also gives us C.    
+# Intalling Fortran also gives us C.
     apt install -y gfortran
 # Installing g++ make installing openmpi easier
     apt install -y g++
