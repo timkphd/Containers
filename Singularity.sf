@@ -1,3 +1,4 @@
+Bootstrap: docker
 FROM ubuntu:18.04
 
 MAINTAINER bhaas@broadinstitute.org
