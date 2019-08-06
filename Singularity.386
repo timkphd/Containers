@@ -1,6 +1,6 @@
 Bootstrap: docker
 From: i686/python
-
+# Aug 06 2019
 %post
     apt-get -y update --fix-missing
     apt-get -y install wget
