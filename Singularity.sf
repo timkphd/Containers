@@ -1,13 +1,14 @@
 Bootstrap: docker
-From: ubuntu:18.04
+From: ubuntu:16.04
 
+#initial was 18.04
 #MAINTAINER bhaas@broadinstitute.org
 
 %post
 apt-get update && apt-get install -y gcc g++ perl python3 automake make \
                                        wget curl libdb-dev \
 				       bzip2 zlibc zlib1g zlib1g-dev  default-jre \
-                       python-setuptools python-dev build-essential \
+                       python-setuptools python-dev python3-dev build-essential \
 				       unzip libbz2-dev  liblzma-dev && \
     apt-get clean
 
@@ -15,7 +16,8 @@ apt-get update && apt-get install -y gcc g++ perl python3 automake make \
 
 ln -sf /usr/bin/python3 /usr/bin/python
 
-apt-get install -y python3-distutils
+#next line broke on 16.04
+#apt-get install -y python3-distutils
 
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
     python get-pip.py
