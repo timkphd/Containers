@@ -3,6 +3,7 @@ From: ubuntu:18.04
 
 #MAINTAINER bhaas@broadinstitute.org
 
+%post
 apt-get update && apt-get install -y gcc g++ perl python3 automake make \
                                        wget curl libdb-dev \
 				       bzip2 zlibc zlib1g zlib1g-dev  default-jre \
@@ -143,4 +144,22 @@ git clone https://github.com/STAR-Fusion/STAR-Fusion.git && \
 
 export STAR_FUSION_HOME=$SRC/STAR-Fusion
 
+%environment
+
+export SRC=/usr/local/src
+export BIN=/usr/local/bin
+export DATA=/usr/local/data
+export SAMTOOLS_VERSION=1.7
+export TRINITY_VERSION=2.8.4
+export TRINITY_HOME=/usr/local/src/trinityrnaseq-Trinity-v${TRINITY_VERSION}
+export STAR_VERSION=2.7.0f
+export GMAP_VERSION=2017-11-15
+export STAR_FUSION_VERSION=1.6.0
+export STARF_CHECKOUT=c465cf33d111121f6be127483379bebd2f866fbd
+export STAR_FUSION_HOME=$SRC/STAR-Fusion
+
+
 ## FusionInspector and FusionAnnotator are bundled with STAR-Fusion
+
+%labels
+	Author bhaas@broadinstitute.org
