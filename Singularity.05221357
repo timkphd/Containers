@@ -6,6 +6,7 @@ From: ubuntu:16.04
     apt-get -y install wget
     apt-get -y install gawk
     apt-get -y install apt-transport-https
+#Aug 06 2019 6:24 AM
 # Next lines require to download Intel Python
     wget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS-2019.PUB
     apt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS-2019.PUB
@@ -15,7 +16,7 @@ From: ubuntu:16.04
     export DEBIAN_FRONTEND=noninteractive
     apt-get install dialog
 date
-# Intalling Fortran also gives us C.    
+# Intalling Fortran also gives us C.  
     apt install -y gfortran
 # Installing g++ make installing openmpi easier
     apt install -y g++
@@ -83,17 +84,18 @@ Rmpi_0.6-9.tar.gz
 # Install rest of tutorial stuff
 cd /opt/install
 cat > bonk.R << EOF
-install.packages("ggplot2", lib=/opt/install/rlibs, repos="http://cran.r-project.org")
-install.packages("ggmap", lib=/opt/install/rlibs, repos="http://cran.r-project.org")
-install.packages("maps", lib=/opt/install/rlibs, repos="http://cran.r-project.org")
-install.packages("mapdata", lib=/opt/install/rlibs, repos="http://cran.r-project.org")
-install.packages("dplyr", lib=/opt/install/rlibs, repos="http://cran.r-project.org")
-install.packages("doParallel", lib=/opt/install/rlibs, repos="http://cran.r-project.org")
-install.packages("gplots", lib=/opt/install/rlibs, repos="http://cran.r-project.org")
-install.packages("foreach", lib=/opt/install/rlibs, repos="http://cran.r-project.org")
-install.packages("tictoc", lib=/opt/install/rlibs, repos="http://cran.r-project.org")
-install.packages("stringr", lib=/opt/install/rlibs, repos="http://cran.r-project.org")
+install.packages("ggplot2", lib="/opt/install/rlibs", repos="http://cran.r-project.org")
+install.packages("ggmap", lib="/opt/install/rlibs", repos="http://cran.r-project.org")
+install.packages("maps", lib="/opt/install/rlibs", repos="http://cran.r-project.org")
+install.packages("mapdata", lib="/opt/install/rlibs", repos="http://cran.r-project.org")
+install.packages("dplyr", lib="/opt/install/rlibs", repos="http://cran.r-project.org")
+install.packages("doParallel", lib="/opt/install/rlibs", repos="http://cran.r-project.org")
+install.packages("gplots", lib="/opt/install/rlibs", repos="http://cran.r-project.org")
+install.packages("foreach", lib="/opt/install/rlibs", repos="http://cran.r-project.org")
+install.packages("tictoc", lib="/opt/install/rlibs", repos="http://cran.r-project.org")
+install.packages("stringr", lib="/opt/install/rlibs", repos="http://cran.r-project.org")
 EOF
+Rscript bonk.R
 
 
 # Install Intel Python
