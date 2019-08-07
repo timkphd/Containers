@@ -1,7 +1,7 @@
 Bootstrap: docker
-From: ubuntu:16.04
+From: ubuntu:18.04
 
-#initial was 18.04
+#initial was 18.04 built on mac with 16.04
 #MAINTAINER bhaas@broadinstitute.org
 
 %post
@@ -17,7 +17,7 @@ apt-get update && apt-get install -y gcc g++ perl python3 automake make \
 ln -sf /usr/bin/python3 /usr/bin/python
 
 #next line broke on 16.04
-#apt-get install -y python3-distutils
+apt-get install -y python3-distutils
 
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
     python get-pip.py
