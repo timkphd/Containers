@@ -177,8 +177,8 @@ unset CFLAGS
 
 
 # Get the rest of Tim's examples:
-    mkdir -p /opt/examples/tims
-    cd /opt/examples/tims
+    #mkdir -p /opt/examples/tims
+    cd /opt
     wget https://petra.acns.colostate.edu/docs/examples/examples.tgz
     tar -xzf examples.tgz
     rm examples.tgz
@@ -205,5 +205,6 @@ date
 
 %labels
     Author thkphd
+
 
 
