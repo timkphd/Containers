@@ -177,15 +177,15 @@ unset CFLAGS
 
 
 # Get the rest of Tim's examples:
-    #mkdir -p /opt/examples/tims
-    cd /opt
+    mkdir -p /opt/examples/full
+    cd /opt/examples/full
     wget https://petra.acns.colostate.edu/docs/examples/examples.tgz
     tar -xzf examples.tgz
     rm examples.tgz
 
 # Do a bit of cleanup.  This directory is ~300MB
     rm -rf /opt/install/openmpi-4.0.1*
-    rm -rf /opt/examples/tims/*tgz
+    rm -rf /opt/examples/full/*tgz
 
 date    
 %environment
@@ -205,6 +205,7 @@ date
 
 %labels
     Author thkphd
+
 
 
 
