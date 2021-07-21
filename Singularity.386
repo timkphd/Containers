@@ -16,8 +16,12 @@ date
 # Install editors
   apt install -y nano
   apt install -y vim
-  
-  apt install python3
+
+# Do R
+  apt install software-properties-common
+  sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/'
+  sudo apt update
+  sudo apt install r-base
 
 
 %environment
