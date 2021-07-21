@@ -16,6 +16,8 @@ date
 # Install editors
   apt install -y nano
   apt install -y vim
+  
+  apt install python3
 
 
 %environment
