@@ -18,10 +18,10 @@ date
   apt install -y vim
 
 # Do R
-  apt install software-properties-common
-  sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/'
-  sudo apt update
-  sudo apt install r-base
+  apt install -y software-properties-common
+  add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/'
+  apt -y update
+  #apt install -y r-base
 
 
 %environment
