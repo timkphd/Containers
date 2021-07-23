@@ -1,0 +1,132 @@
+Bootstrap: docker
+From: ubuntu:latest
+
+%post
+    apt-get -y update
+    apt-get -y install wget
+    apt-get -y install curl
+    apt-get -y install libcurl4-openssl-dev 
+    apt-get -y install openssl
+    apt-get -y install libssl-dev
+    apt-get -y install gawk
+    apt-get -y install git
+    apt-get -y install apt-transport-https
+# Next lines require to download Intel Python
+    #wget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS-2019.PUB
+    #apt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS-2019.PUB
+    #wget https://apt.repos.intel.com/setup/intelproducts.list -O /etc/apt/sources.list.d/intelproducts.list
+    apt-get -y update
+# This prevents some questions being asked
+    export DEBIAN_FRONTEND=noninteractive
+    apt-get install dialog
+date
+# Intalling Fortran also gives us C.    
+    apt install -y gfortran
+# Installing g++ make installing openmpi easier
+    apt install -y g++
+    apt install -y make
+date
+
+apt install -y python3
+apt install -y pip
+
+oldcd=`pwd`
+
+mkdir -p /opt/install
+cd /opt/install
+
+wget https://bootstrap.pypa.io/get-pip.py
+#python3 get-pip.py
+
+cd $oldcd
+
+
+# Build openmpi
+# This will, at best be slow over network and most likely
+# will only work for a single node.
+# We need ssh for this to work.
+
+apt install -y openssh-server
+apt install -y openssh-client
+
+apt install -y openmpi-bin
+
+export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+export PATH=/usr/local/bin:$PATH
+
+which mpicc
+
+
+# Install editors
+  apt install -y nano
+  apt install -y vim
+
+# lpr might be needed by enscript
+  apt install -y lpr
+
+# The next two lines install a perl module needed 
+# by the backup app installed below.
+   apt install -y cpanminus
+   cpan install Term::ANSIColor
+
+# Install Rrrrrrrr
+# 08/04/19
+apt-get -y install software-properties-common
+apt update
+apt install -y r-base
+
+
+# Install Rmpi
+mkdir -p /opt/install/rlibs
+cd /opt/install
+wget https://cran.r-project.org/src/contrib/Rmpi_0.6-9.1.tar.gz
+R CMD INSTALL -l /opt/install/rlibs --configure-args=" \
+--with-Rmpi-include='/usr/lib/x86_64-linux-gnu/openmpi/include' \
+--with-Rmpi-libpath='/usr/lib/x86_64-linux-gnu/openmpi/lib' \
+--with-mpi='/usr/local' \
+--with-Rmpi-type='OPENMPI' " \
+Rmpi_0.6-9.1.tar.gz
+
+# Install rest of tutorial stuff
+cd /opt/install
+cat > bonk.R << EOF
+install.packages("ggplot2", lib="/opt/install/rlibs", repos="http://cran.r-project.org")
+install.packages("ggmap", lib="/opt/install/rlibs", repos="http://cran.r-project.org")
+install.packages("maps", lib="/opt/install/rlibs", repos="http://cran.r-project.org")
+install.packages("mapdata", lib="/opt/install/rlibs", repos="http://cran.r-project.org")
+install.packages("dplyr", lib="/opt/install/rlibs", repos="http://cran.r-project.org")
+install.packages("doParallel", lib="/opt/install/rlibs", repos="http://cran.r-project.org")
+install.packages("gplots", lib="/opt/install/rlibs", repos="http://cran.r-project.org")
+install.packages("foreach", lib="/opt/install/rlibs", repos="http://cran.r-project.org")
+install.packages("tictoc", lib="/opt/install/rlibs", repos="http://cran.r-project.org")
+install.packages("stringr", lib="/opt/install/rlibs", repos="http://cran.r-project.org")
+EOF
+
+Rscript bonk.R
+
+export CFLAGS="-std=c99"
+pip install mpi4py
+unset CFLAGS
+
+
+# Get the rest of Tim's examples:
+    mkdir -p /opt/examples/tims
+    cd /opt/examples/tims
+    git clone https://github.com/timkphd/examples
+
+date    
+%environment
+    export LC_ALL=C
+# Python order is important if you want both 3 and 2  
+# because there is "python" under intelpython3 that is
+# actually python3
+    export PATH=/opt/install:$PATH
+    export PATH=/opt/examples:$PATH
+    export PATH=/usr/local/bin:$PATH
+    export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+    export export R_LIBS=/opt/install/rlibs/
+
+%labels
+    Author thkphd
+
+
